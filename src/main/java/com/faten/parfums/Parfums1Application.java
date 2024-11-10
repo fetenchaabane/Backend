@@ -5,10 +5,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 import com.faten.parfums.entities.Parfum;
+import com.faten.parfums.entities.Type;
 
 @SpringBootApplication
+@EnableMethodSecurity(prePostEnabled = true)
 public class Parfums1Application implements CommandLineRunner{
 	@Autowired
 	private RepositoryRestConfiguration repositoryRestConfiguration;
@@ -19,7 +22,7 @@ public class Parfums1Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-	repositoryRestConfiguration.exposeIdsFor(Parfum.class);
+	repositoryRestConfiguration.exposeIdsFor(Parfum.class,Type.class);
 	}
 
 	
